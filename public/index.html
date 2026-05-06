@@ -135,15 +135,21 @@
                 </template>
               </div>
 
-              <!-- Card footer with action -->
-              <div class="px-6 py-4 border-t border-slate-700/50 flex gap-2">
-                <a :href="link.url" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-medium text-center transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30">
-                  Open
-                </a>
-                <button @click="copyToClipboard(link.url)" class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600 text-gray-300 rounded-lg transition-colors duration-200">
-                  Copy
-                </button>
-              </div>
+               <!-- Card footer with action -->
+               <div class="px-6 py-4 border-t border-slate-700/50 flex gap-2 flex-wrap">
+                 <a :href="link.url" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-medium text-center transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30">
+                   Open
+                 </a>
+                 <button @click="copyToClipboard(link.url)" class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600 text-gray-300 rounded-lg transition-colors duration-200">
+                   Copy
+                 </button>
+                 <button @click="editDescription(link.id)" class="px-4 py-2 bg-green-500/50 hover:bg-green-600 text-green-300 rounded-lg transition-colors duration-200">
+                   Desc
+                 </button>
+                 <button @click="editTags(link.id)" class="px-4 py-2 bg-yellow-500/50 hover:bg-yellow-600 text-yellow-300 rounded-lg transition-colors duration-200">
+                   Tag
+                 </button>
+               </div>
             </div>
           </template>
         </div>

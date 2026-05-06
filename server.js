@@ -80,6 +80,61 @@ app.get('/api/links', (req, res) => {
   res.json(links);
 });
 
+// API endpoint to update a link (description and/or tags)
+app.put('/api/links/:id', express.json(), (req, res) => {
+  const linkId = req.params.id;
+  const { description, tags } = req.body;
+
+  // Validate input
+  if (description === undefined && tags === undefined) {
+    return res.status(400).json({ error: 'At least one field (description or tags) must be provided' });
+  }
+
+  const dataDir = path.join(__dirname, 'data');
+  const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
+
+  let updated = false;
+
+  for (const file of files) {
+    const filePath = path.join(dataDir, file);
+    try {
+      const content = fs.readFileSync(filePath, 'utf8');
+      const data = JSON.parse(content);
+
+      if (!data.links || !Array.isArray(data.links)) {
+        continue;
+      }
+
+      const linkIndex = data.links.findIndex(link => link.id === linkId);
+      if (linkIndex === -1) {
+        continue;
+      }
+
+      // Update the link
+      if (description !== undefined) {
+        data.links[linkIndex].description = description;
+      }
+      if (tags !== undefined) {
+        data.links[linkIndex].tags = tags;
+      }
+
+      // Write back to file
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+      updated = true;
+      break; // Exit loop after updating
+    } catch (err) {
+      console.error(`Error processing ${file}:`, err.message);
+      return res.status(500).json({ error: `Failed to process ${file}` });
+    }
+  }
+
+  if (updated) {
+    res.json({ message: 'Link updated successfully' });
+  } else {
+    res.status(404).json({ error: 'Link not found' });
+  }
+});
+
 // API endpoint to get available filter options
 app.get('/api/filters', (req, res) => {
   const links = loadAllLinks();
