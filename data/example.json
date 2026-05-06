@@ -1,0 +1,59 @@
+{
+  "links": [
+    {
+      "id": "link-1",
+      "title": "Advanced JavaScript Patterns",
+      "url": "https://www.youtube.com/@jspatterns",
+      "category": "Programming",
+      "source": "TikTok",
+      "author": "dev_guru",
+      "description": "Quick JavaScript tips and patterns for cleaner code",
+      "tags": ["javascript", "tutorial", "patterns"],
+      "dateAdded": "2026-05-06"
+    },
+    {
+      "id": "link-2",
+      "title": "UI Design Inspiration Gallery",
+      "url": "https://dribbble.com",
+      "category": "Design",
+      "source": "Instagram",
+      "author": "design_daily",
+      "description": "Discover beautiful UI designs from talented designers",
+      "tags": ["design", "ui", "inspiration"],
+      "dateAdded": "2026-05-05"
+    },
+    {
+      "id": "link-3",
+      "title": "React Best Practices 2026",
+      "url": "https://react.dev",
+      "category": "Programming",
+      "source": "Direct URL",
+      "author": "React Team",
+      "description": "Official React documentation with latest best practices",
+      "tags": ["react", "javascript", "frontend"],
+      "dateAdded": "2026-05-04"
+    },
+    {
+      "id": "link-4",
+      "title": "Color Theory for Web Design",
+      "url": "https://www.youtube.com/watch?v=example",
+      "category": "Design",
+      "source": "YouTube",
+      "author": "color_expert",
+      "description": "Master color theory and its application in modern web design",
+      "tags": ["design", "color", "theory"],
+      "dateAdded": "2026-05-03"
+    },
+    {
+      "id": "link-5",
+      "title": "Database Optimization Guide",
+      "url": "https://example-db.dev",
+      "category": "Programming",
+      "source": "Direct URL",
+      "author": "db_master",
+      "description": "Performance tips for SQL and NoSQL databases",
+      "tags": ["database", "performance", "optimization"],
+      "dateAdded": "2026-05-02"
+    }
+  ]
+}
