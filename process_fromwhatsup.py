@@ -77,7 +77,8 @@ def main():
             # Add to links array
             data['links'].append(new_link)
             print(f"Added: {new_id} - {description} ({source})")
-    
+        else:   
+            print("Attesa linea csv non trovata "+line)
     # Write updated JSON back to file
     with open(json_file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
