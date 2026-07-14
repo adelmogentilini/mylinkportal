@@ -4,7 +4,9 @@
       "Bash(npm install *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "WebFetch(domain:vm.tiktok.com)",
+      "WebFetch(domain:www.tiktok.com)"
     ]
   }
 }
