@@ -14,6 +14,10 @@ const AUTH_PASSWORD = process.env.PORTAL_PASSWORD || 'portal2026';
 const SESSION_COOKIE = 'portal_session';
 const sessions = new Set();
 
+// Shared secret for the Telegram bot (or any other trusted script) to call the
+// API directly, without going through the browser login flow.
+const BOT_API_TOKEN = process.env.PORTAL_BOT_TOKEN || null;
+
 function parseCookies(req) {
   const header = req.headers.cookie;
   const cookies = {};
@@ -27,6 +31,7 @@ function parseCookies(req) {
 }
 
 function isAuthenticated(req) {
+  if (BOT_API_TOKEN && req.headers['x-bot-token'] === BOT_API_TOKEN) return true;
   const token = parseCookies(req)[SESSION_COOKIE];
   return !!token && sessions.has(token);
 }

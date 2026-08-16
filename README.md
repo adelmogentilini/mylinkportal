@@ -20,13 +20,19 @@ A beautiful, self-contained server that creates an engaging navigation portal fr
 npm install
 ```
 
+### Login
+
+The UI is protected by a login page (`public/login.html`) with credentials read from env vars
+`PORTAL_USER` / `PORTAL_PASSWORD` (defaults: `admin` / `portal2026`). Copy `.env.example` to
+`.env` and set your own before deploying anywhere public.
+
 ### Running Locally
 
 ```bash
 npm start
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then open `http://localhost:3000` in your browser and log in.
 
 ## Adding Links
 
@@ -128,6 +134,12 @@ Content-Type: application/json
 Any subset of `title`, `description`, `tags` can be sent. Used by the UI's edit-title,
 edit-description, edit-tags and title/description swap actions.
 
+### Delete a Link
+```
+DELETE /api/links/:id
+```
+Used by the UI's 🗑️ button (asks for confirmation before calling this).
+
 ### Query Parameters
 - `tag=javascript` - Filter by tag
 - `search=query` - Search by title/description
@@ -149,6 +161,32 @@ Returns:
 }
 ```
 
+## Telegram Bot
+
+Forward a link to a Telegram bot and it gets added exactly as if you'd pasted it in the
+"Add link" form — same metadata inference, same `data/ad_link.json`.
+
+### Setup
+
+1. Talk to [@BotFather](https://t.me/BotFather) on Telegram, run `/newbot`, and copy the token
+   it gives you.
+2. Copy `.env.example` to `.env` and fill in:
+   - `TELEGRAM_BOT_TOKEN` - the token from BotFather
+   - `PORTAL_BOT_TOKEN` - any random secret, e.g. generate one with
+     `node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"`.
+     Must match between the server and the bot (both read it from `.env`).
+   - `TELEGRAM_ALLOWED_CHAT_IDS` (optional) - comma-separated chat ids allowed to add links;
+     leave empty while testing, then lock it down once the bot is public
+3. Start the server (`npm start`) and, in another terminal, the bot:
+   ```bash
+   npm run bot
+   ```
+4. Message your bot a link on Telegram — it replies with the title it saved, or an error.
+
+The bot only needs to run somewhere that can reach the portal server's `PORTAL_API_URL`
+(default `http://localhost:3000`); it uses long-polling, so it does **not** need to be
+publicly reachable itself, even after the portal is deployed online.
+
 ## Architecture
 
 - **server.js** - Express.js backend
@@ -158,6 +196,8 @@ Returns:
 
 - **public/index.html** - HTML UI with Tailwind CSS
 - **public/app.js** - Alpine.js frontend logic
+- **public/login.html** - Login page
+- **telegram-bot.js** - Optional Telegram bot that forwards links to `POST /api/links`
 - **data/*** - Your link collections
 
 ## Tips

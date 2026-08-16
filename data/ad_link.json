@@ -616,6 +616,17 @@
         "Instagram"
       ],
       "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-68",
+      "title": "google.com Link",
+      "url": "https://www.google.com",
+      "description": "Link from google.com",
+      "tags": [
+        "DACLASSIFICARE",
+        "google.com"
+      ],
+      "dateAdded": "2026-08-16"
     }
   ]
 }
