@@ -1,11 +1,67 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
 const ADD_LINK_FILE = path.join(DATA_DIR, 'ad_link.json');
+
+// Hardcoded credentials for now; can be overridden via env vars.
+const AUTH_USER = process.env.PORTAL_USER || 'admin';
+const AUTH_PASSWORD = process.env.PORTAL_PASSWORD || 'portal2026';
+const SESSION_COOKIE = 'portal_session';
+const sessions = new Set();
+
+function parseCookies(req) {
+  const header = req.headers.cookie;
+  const cookies = {};
+  if (!header) return cookies;
+  header.split(';').forEach(pair => {
+    const idx = pair.indexOf('=');
+    if (idx === -1) return;
+    cookies[pair.slice(0, idx).trim()] = decodeURIComponent(pair.slice(idx + 1).trim());
+  });
+  return cookies;
+}
+
+function isAuthenticated(req) {
+  const token = parseCookies(req)[SESSION_COOKIE];
+  return !!token && sessions.has(token);
+}
+
+// Everything except the login page/endpoint requires an authenticated session
+app.use((req, res, next) => {
+  if (req.path === '/login.html' || req.path === '/api/login') return next();
+  if (isAuthenticated(req)) return next();
+  if (req.path.startsWith('/api/')) {
+    return res.status(401).json({ error: 'Non autenticato' });
+  }
+  return res.redirect('/login.html');
+});
+
+app.post('/api/login', express.json(), (req, res) => {
+  const { username, password } = req.body || {};
+  if (username === AUTH_USER && password === AUTH_PASSWORD) {
+    const token = crypto.randomBytes(32).toString('hex');
+    sessions.add(token);
+    res.cookie(SESSION_COOKIE, token, {
+      httpOnly: true,
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+    return res.json({ ok: true });
+  }
+  return res.status(401).json({ error: 'Credenziali non valide' });
+});
+
+app.post('/api/logout', (req, res) => {
+  const token = parseCookies(req)[SESSION_COOKIE];
+  if (token) sessions.delete(token);
+  res.clearCookie(SESSION_COOKIE);
+  res.json({ ok: true });
+});
 
 // Serve static files
 app.use(express.static('public'));
@@ -261,6 +317,45 @@ app.put('/api/links/:id', express.json(), (req, res) => {
 
   if (updated) {
     res.json({ message: 'Link updated successfully' });
+  } else {
+    res.status(404).json({ error: 'Link not found' });
+  }
+});
+
+// API endpoint to delete a link
+app.delete('/api/links/:id', (req, res) => {
+  const linkId = req.params.id;
+  const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+
+  let deleted = false;
+
+  for (const file of files) {
+    const filePath = path.join(DATA_DIR, file);
+    try {
+      const content = fs.readFileSync(filePath, 'utf8');
+      const data = JSON.parse(content);
+
+      if (!data.links || !Array.isArray(data.links)) {
+        continue;
+      }
+
+      const linkIndex = data.links.findIndex(link => link.id === linkId);
+      if (linkIndex === -1) {
+        continue;
+      }
+
+      data.links.splice(linkIndex, 1);
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+      deleted = true;
+      break;
+    } catch (err) {
+      console.error(`Error processing ${file}:`, err.message);
+      return res.status(500).json({ error: `Failed to process ${file}` });
+    }
+  }
+
+  if (deleted) {
+    res.json({ message: 'Link deleted successfully' });
   } else {
     res.status(404).json({ error: 'Link not found' });
   }

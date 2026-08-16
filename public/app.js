@@ -234,6 +234,44 @@ function portalApp() {
        }
      },
 
+     async deleteLink(linkId) {
+       const link = this.allLinks.find(l => l.id === linkId);
+       if (!link) return;
+
+       const confirmed = confirm(`Eliminare il link "${link.title || link.url}"?`);
+       if (!confirmed) return;
+
+       try {
+         const response = await fetch(`/api/links/${linkId}`, { method: 'DELETE' });
+
+         if (response.status === 401) {
+           window.location.href = '/login.html';
+           return;
+         }
+
+         if (response.ok) {
+           this.allLinks = this.allLinks.filter(l => l.id !== linkId);
+           this.filterLinks();
+           await this.loadFilters();
+         } else {
+           alert('Failed to delete link');
+         }
+       } catch (err) {
+         console.error('Error deleting link:', err);
+         alert('Error deleting link');
+       }
+     },
+
+     async logout() {
+       try {
+         await fetch('/api/logout', { method: 'POST' });
+       } catch (err) {
+         console.error('Error logging out:', err);
+       } finally {
+         window.location.href = '/login.html';
+       }
+     },
+
      async editTags(linkId) {
        const link = this.allLinks.find(l => l.id === linkId);
        if (!link) return;
