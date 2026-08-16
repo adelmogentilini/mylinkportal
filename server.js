@@ -5,9 +5,100 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
+const ADD_LINK_FILE = path.join(DATA_DIR, 'ad_link.json');
 
 // Serve static files
 app.use(express.static('public'));
+
+// Known platforms, used to guess "source" and a default title from the URL alone
+const SOURCE_PATTERNS = [
+  { match: /tiktok\.com/i, source: 'TikTok', title: () => 'TikTok Video' },
+  { match: /instagram\.com/i, source: 'Instagram', title: url => (/\/reel/i.test(url) ? 'Instagram Reel' : 'Instagram Post') },
+  { match: /facebook\.com|fb\.watch/i, source: 'Facebook', title: () => 'Facebook Post' },
+  { match: /threads\.(com|net)/i, source: 'Threads', title: () => 'Threads Post' },
+  { match: /youtube\.com|youtu\.be/i, source: 'YouTube', title: () => 'YouTube Video' },
+  { match: /twitter\.com|x\.com/i, source: 'X', title: () => 'X Post' },
+  { match: /linkedin\.com/i, source: 'LinkedIn', title: () => 'LinkedIn Post' },
+  { match: /reddit\.com/i, source: 'Reddit', title: () => 'Reddit Post' },
+];
+
+// Best-effort keyword -> tag mapping, based on the tags already used in data/*.json
+const TAG_KEYWORDS = [
+  { tags: ['Cucina'], keywords: ['ricetta', 'pizza', 'cucina', 'cibo', 'gelato', 'patate', 'pasta', 'dolce', 'dessert', 'food', 'recipe', 'merenda', 'piada'] },
+  { tags: ['AI'], keywords: ['intelligenza artificiale', 'chatgpt', 'claude', 'prompt', 'modello ai', ' llm', 'openai', ' ai '] },
+  { tags: ['Tecno'], keywords: ['tecnologia', 'trucco', 'telefono', 'smartphone', 'codice', 'gadget', 'iphone', 'android'] },
+  { tags: ['Internet'], keywords: ['sito web', 'siti ', 'internet', 'password', 'sicurezza', 'browser', 'privacy', 'risorse online'] },
+  { tags: ['Psyco'], keywords: ['mentale', 'psicologia', 'ansia', 'stress', 'benessere psic'] },
+  { tags: ['Storia'], keywords: ['storia', 'romani', 'romana', 'antica', 'storico'] },
+];
+
+function inferSourceAndTitle(url) {
+  for (const p of SOURCE_PATTERNS) {
+    if (p.match.test(url)) {
+      return { source: p.source, title: p.title(url) };
+    }
+  }
+  let hostname = 'Unknown';
+  try {
+    hostname = new URL(url).hostname.replace(/^www\./, '') || 'Unknown';
+  } catch (err) {
+    // leave hostname as 'Unknown'
+  }
+  return { source: hostname, title: hostname !== 'Unknown' ? `${hostname} Link` : 'Unknown Link' };
+}
+
+function inferTags(text) {
+  const haystack = ` ${(text || '').toLowerCase()} `;
+  for (const entry of TAG_KEYWORDS) {
+    if (entry.keywords.some(kw => haystack.includes(kw))) {
+      return entry.tags;
+    }
+  }
+  return null;
+}
+
+function extractMetaContent(html, property) {
+  let re = new RegExp(`<meta[^>]+(?:property|name)=["']${property}["'][^>]*content=["']([^"']*)["']`, 'i');
+  let m = html.match(re);
+  if (m) return m[1];
+  re = new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]+(?:property|name)=["']${property}["']`, 'i');
+  m = html.match(re);
+  return m ? m[1] : null;
+}
+
+// Best-effort fetch of the page itself, to try to extract a real title/description
+// (source we can already infer from the URL, the topic is harder and may require this).
+async function fetchLinkMetadata(url) {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const response = await fetch(url, {
+      redirect: 'follow',
+      signal: controller.signal,
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PortalBot/1.0)' }
+    });
+    clearTimeout(timeoutId);
+    const html = await response.text();
+    return {
+      ogTitle: extractMetaContent(html, 'og:title'),
+      ogDescription: extractMetaContent(html, 'og:description')
+    };
+  } catch (err) {
+    return {};
+  }
+}
+
+function generateNextLinkId() {
+  const links = loadAllLinks();
+  let max = 0;
+  links.forEach(l => {
+    if (l.id && l.id.startsWith('link-')) {
+      const n = parseInt(l.id.split('-')[1], 10);
+      if (!isNaN(n)) max = Math.max(max, n);
+    }
+  });
+  return `link-${max + 1}`;
+}
 
 // Load all links from JSON files in data directory
 function loadAllLinks() {
@@ -40,27 +131,6 @@ function loadAllLinks() {
 app.get('/api/links', (req, res) => {
   let links = loadAllLinks();
 
-  // Filter by category
-  if (req.query.category) {
-    links = links.filter(l =>
-      l.category && l.category.toLowerCase() === req.query.category.toLowerCase()
-    );
-  }
-
-  // Filter by source
-  if (req.query.source) {
-    links = links.filter(l =>
-      l.source && l.source.toLowerCase() === req.query.source.toLowerCase()
-    );
-  }
-
-  // Filter by author
-  if (req.query.author) {
-    links = links.filter(l =>
-      l.author && l.author.toLowerCase() === req.query.author.toLowerCase()
-    );
-  }
-
   // Filter by tag
   if (req.query.tag) {
     links = links.filter(l =>
@@ -80,14 +150,72 @@ app.get('/api/links', (req, res) => {
   res.json(links);
 });
 
-// API endpoint to update a link (description and/or tags)
+// API endpoint to add a new link, inferring metadata from the URL itself where possible
+app.post('/api/links', express.json(), async (req, res) => {
+  const body = req.body || {};
+  const url = typeof body.url === 'string' ? body.url.trim() : '';
+
+  if (!url) {
+    return res.status(400).json({ error: 'Field "url" is required' });
+  }
+  try {
+    new URL(url);
+  } catch (err) {
+    return res.status(400).json({ error: 'Invalid URL' });
+  }
+
+  const { source, title: fallbackTitle } = inferSourceAndTitle(url);
+  const meta = await fetchLinkMetadata(url);
+
+  const title = body.title || meta.ogTitle || fallbackTitle;
+  const description = body.description || meta.ogDescription || '';
+
+  let tags = Array.isArray(body.tags) ? body.tags.filter(t => typeof t === 'string' && t.trim()) : [];
+
+  if (tags.length === 0) {
+    const inferred = inferTags(`${title} ${description}`);
+    // Topic could not be established from the link itself
+    tags = inferred ? [...inferred] : ['DACLASSIFICARE'];
+  }
+
+  // The source/platform isn't stored as its own field; it just becomes another tag
+  if (source && source.toLowerCase() !== 'unknown' && !tags.some(t => t.toLowerCase() === source.toLowerCase())) {
+    tags.push(source);
+  }
+
+  const newLink = {
+    id: generateNextLinkId(),
+    title,
+    url,
+    description: description || `Link from ${source}`,
+    tags,
+    dateAdded: new Date().toISOString().split('T')[0]
+  };
+
+  try {
+    let data = { links: [] };
+    if (fs.existsSync(ADD_LINK_FILE)) {
+      data = JSON.parse(fs.readFileSync(ADD_LINK_FILE, 'utf8'));
+      if (!Array.isArray(data.links)) data.links = [];
+    }
+    data.links.push(newLink);
+    fs.writeFileSync(ADD_LINK_FILE, JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.error('Error saving new link:', err.message);
+    return res.status(500).json({ error: 'Failed to save link' });
+  }
+
+  res.status(201).json(newLink);
+});
+
+// API endpoint to update a link (title, description and/or tags)
 app.put('/api/links/:id', express.json(), (req, res) => {
   const linkId = req.params.id;
-  const { description, tags } = req.body;
+  const { title, description, tags } = req.body;
 
   // Validate input
-  if (description === undefined && tags === undefined) {
-    return res.status(400).json({ error: 'At least one field (description or tags) must be provided' });
+  if (title === undefined && description === undefined && tags === undefined) {
+    return res.status(400).json({ error: 'At least one field (title, description or tags) must be provided' });
   }
 
   const dataDir = path.join(__dirname, 'data');
@@ -111,6 +239,9 @@ app.put('/api/links/:id', express.json(), (req, res) => {
       }
 
       // Update the link
+      if (title !== undefined) {
+        data.links[linkIndex].title = title;
+      }
       if (description !== undefined) {
         data.links[linkIndex].description = description;
       }
@@ -139,17 +270,9 @@ app.put('/api/links/:id', express.json(), (req, res) => {
 app.get('/api/filters', (req, res) => {
   const links = loadAllLinks();
 
-  const categories = [...new Set(links.map(l => l.category).filter(Boolean))].sort();
-  const sources = [...new Set(links.map(l => l.source).filter(Boolean))].sort();
-  const authors = [...new Set(links.map(l => l.author).filter(Boolean))].sort();
   const tags = [...new Set(links.flatMap(l => l.tags || []))].sort();
 
-  res.json({
-    categories,
-    sources,
-    authors,
-    tags
-  });
+  res.json({ tags });
 });
 
 app.listen(PORT, () => {

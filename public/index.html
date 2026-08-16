@@ -24,154 +24,145 @@
 
     <!-- Main content -->
     <div class="max-w-7xl mx-auto px-4 py-8">
-      <!-- Filters Section -->
-      <div class="bg-slate-800/30 backdrop-blur-sm rounded-lg border border-slate-700/50 p-6 mb-8">
-        <!-- Search -->
-        <div class="mb-6">
+      <!-- Add Link Section -->
+      <div class="bg-slate-800/30 backdrop-blur-sm rounded-lg border border-slate-700/50 p-4 mb-6">
+        <form @submit.prevent="addLink()" class="flex flex-col md:flex-row gap-3">
+          <input
+            type="url"
+            x-model="newLinkUrl"
+            placeholder="Paste a link to add it..."
+            required
+            class="flex-1 px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+          />
+          <input
+            type="text"
+            x-model="newLinkDescription"
+            placeholder="Description (optional)"
+            class="flex-1 px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+          />
+          <button
+            type="submit"
+            :disabled="adding"
+            class="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 text-white rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap"
+            x-text="adding ? 'Adding...' : 'Add link'"
+          ></button>
+        </form>
+      </div>
+
+      <!-- Sidebar + list layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 items-start">
+
+        <!-- Sidebar -->
+        <aside class="bg-slate-800/30 backdrop-blur-sm rounded-lg border border-slate-700/50 p-5 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+          <!-- Search -->
           <input
             type="text"
             x-model="search"
             @input="filterLinks()"
             placeholder="Search links..."
-            class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           />
-        </div>
-
-        <!-- Filter tabs -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Categories -->
-          <div>
-            <label class="block text-sm font-semibold mb-2 text-gray-300">Categories</label>
-            <select x-model="selectedCategory" @change="filterLinks()" class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">All categories</option>
-              <template x-for="cat in filters.categories" :key="cat">
-                <option :value="cat" x-text="cat"></option>
-              </template>
-            </select>
-          </div>
-
-          <!-- Sources -->
-          <div>
-            <label class="block text-sm font-semibold mb-2 text-gray-300">Source</label>
-            <select x-model="selectedSource" @change="filterLinks()" class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">All sources</option>
-              <template x-for="src in filters.sources" :key="src">
-                <option :value="src" x-text="src"></option>
-              </template>
-            </select>
-          </div>
-
-          <!-- Authors -->
-          <div>
-            <label class="block text-sm font-semibold mb-2 text-gray-300">Author</label>
-            <select x-model="selectedAuthor" @change="filterLinks()" class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">All authors</option>
-              <template x-for="auth in filters.authors" :key="auth">
-                <option :value="auth" x-text="auth"></option>
-              </template>
-            </select>
-          </div>
 
           <!-- Tags -->
           <div>
-            <label class="block text-sm font-semibold mb-2 text-gray-300">Tags</label>
-            <select x-model="selectedTag" @change="filterLinks()" class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">All tags</option>
-              <template x-for="tag in filters.tags" :key="tag">
-                <option :value="tag" x-text="tag"></option>
+            <h3 class="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-3">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+              <button
+                @click="selectTag('')"
+                :class="!selectedTag ? 'bg-purple-500 text-white' : 'bg-slate-700/50 text-gray-300 hover:bg-slate-600'"
+                class="px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
+              >
+                All <span class="opacity-70" x-text="`(${allLinks.length})`"></span>
+              </button>
+              <template x-for="t in tagCounts()" :key="t.name">
+                <button
+                  @click="selectTag(t.name)"
+                  :class="selectedTag === t.name ? 'bg-purple-500 text-white' : 'bg-slate-700/50 text-gray-300 hover:bg-slate-600'"
+                  class="px-2.5 py-1 rounded-full text-xs transition-colors"
+                >
+                  #<span x-text="t.name"></span> <span class="opacity-70" x-text="`(${t.count})`"></span>
+                </button>
               </template>
-            </select>
+            </div>
           </div>
-        </div>
 
-        <!-- Results count -->
-        <div class="mt-4 text-sm text-gray-400">
-          <span x-text="`${displayedLinks.length} link${displayedLinks.length !== 1 ? 's' : ''}`"></span>
-          <template x-if="allLinks.length > displayedLinks.length">
-            <span x-text="`out of ${allLinks.length}`"></span>
+          <template x-if="selectedTag || search">
+            <button @click="resetFilters()" class="w-full px-3 py-2 bg-slate-700/50 hover:bg-slate-600 text-gray-300 rounded-lg text-sm transition-colors">
+              Clear filters
+            </button>
           </template>
-        </div>
-      </div>
+        </aside>
 
-      <!-- Links Grid -->
-      <template x-if="displayedLinks.length > 0">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <template x-for="link in displayedLinks" :key="link.id || link.url">
-            <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 flex flex-col">
-              <!-- Card header with category -->
-              <div class="px-6 py-4 border-b border-slate-700/50 bg-gradient-to-r from-slate-700/20 to-transparent">
-                <div class="flex items-start justify-between gap-2">
-                  <div class="flex-1">
-                    <h3 class="font-semibold text-lg text-white mb-2 line-clamp-2" x-text="link.title"></h3>
-                    <p class="text-sm text-gray-400 line-clamp-2" x-text="link.description || 'No description'"></p>
-                  </div>
-                </div>
-              </div>
+        <!-- Link list -->
+        <section class="min-w-0">
+          <div class="flex items-center justify-between mb-4 text-sm text-gray-400">
+            <span x-text="`${displayedLinks.length} link${displayedLinks.length !== 1 ? 's' : ''}`"></span>
+            <template x-if="allLinks.length > displayedLinks.length">
+              <span x-text="`out of ${allLinks.length}`"></span>
+            </template>
+          </div>
 
-              <!-- Card metadata -->
-              <div class="px-6 py-3 text-sm space-y-2 flex-grow">
-                <div class="flex flex-wrap gap-2">
-                  <template x-if="link.category">
-                    <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs font-medium" x-text="link.category"></span>
+          <template x-if="displayedLinks.length > 0">
+            <div class="space-y-8">
+              <template x-for="group in groupedLinks()" :key="group.tag">
+                <div>
+                  <template x-if="!selectedTag">
+                    <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3 flex items-center gap-2">
+                      <span x-text="group.tag"></span>
+                      <span class="text-gray-600 font-normal normal-case" x-text="`(${group.links.length})`"></span>
+                    </h2>
                   </template>
-                  <template x-if="link.source">
-                    <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs font-medium" x-text="link.source"></span>
-                  </template>
-                </div>
 
-                <template x-if="link.author">
-                  <div class="text-gray-400 text-xs">
-                    <span class="text-gray-500">Author:</span>
-                    <span x-text="link.author"></span>
-                  </div>
-                </template>
+                  <div class="divide-y divide-slate-700/40 bg-slate-800/30 rounded-lg border border-slate-700/50 overflow-hidden">
+                    <template x-for="link in group.links" :key="link.id || link.url">
+                      <div class="flex items-center gap-3 sm:gap-4 px-4 py-3 hover:bg-slate-700/30 transition-colors">
+                        <span class="text-xl shrink-0" x-text="sourceIcon(link.tags)"></span>
 
-                <template x-if="link.tags && link.tags.length > 0">
-                  <div class="flex flex-wrap gap-1 pt-2">
-                    <template x-for="tag in link.tags" :key="tag">
-                      <span class="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs" x-text="`#${tag}`"></span>
+                        <a :href="link.url" target="_blank" rel="noopener noreferrer" class="flex-1 min-w-0">
+                          <div class="font-medium text-white truncate" x-text="link.title"></div>
+                          <div class="text-xs text-gray-400 truncate" x-text="link.description || 'No description'"></div>
+                        </a>
+
+                        <div class="hidden md:flex flex-wrap gap-1 max-w-[220px] justify-end shrink-0">
+                          <template x-for="tag in (link.tags || []).slice(0, 3)" :key="tag">
+                            <span class="px-2 py-0.5 bg-slate-700/50 text-gray-400 rounded text-xs" x-text="`#${tag}`"></span>
+                          </template>
+                        </div>
+
+                        <div class="flex items-center gap-1 shrink-0">
+                          <button @click="copyToClipboard(link.url)" title="Copy link" class="p-2 text-gray-400 hover:text-white hover:bg-slate-600 rounded-lg transition-colors">📋</button>
+                          <button @click="editTitle(link.id)" title="Edit title" class="p-2 text-gray-400 hover:text-white hover:bg-slate-600 rounded-lg transition-colors">📝</button>
+                          <button @click="editDescription(link.id)" title="Edit description" class="p-2 text-gray-400 hover:text-white hover:bg-slate-600 rounded-lg transition-colors">💬</button>
+                          <button @click="swapTitleDescription(link.id)" title="Swap title/description" class="p-2 text-gray-400 hover:text-white hover:bg-slate-600 rounded-lg transition-colors">⇄</button>
+                          <button @click="editTags(link.id)" title="Edit tags" class="p-2 text-gray-400 hover:text-white hover:bg-slate-600 rounded-lg transition-colors">🏷️</button>
+                        </div>
+                      </div>
                     </template>
                   </div>
-                </template>
-              </div>
-
-               <!-- Card footer with action -->
-               <div class="px-6 py-4 border-t border-slate-700/50 flex gap-2 flex-wrap">
-                 <a :href="link.url" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-medium text-center transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30">
-                   Open
-                 </a>
-                 <button @click="copyToClipboard(link.url)" class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600 text-gray-300 rounded-lg transition-colors duration-200">
-                   Copy
-                 </button>
-                 <button @click="editDescription(link.id)" class="px-4 py-2 bg-green-500/50 hover:bg-green-600 text-green-300 rounded-lg transition-colors duration-200">
-                   Desc
-                 </button>
-                 <button @click="editTags(link.id)" class="px-4 py-2 bg-yellow-500/50 hover:bg-yellow-600 text-yellow-300 rounded-lg transition-colors duration-200">
-                   Tag
-                 </button>
-               </div>
+                </div>
+              </template>
             </div>
           </template>
-        </div>
-      </template>
 
-      <!-- Empty state -->
-      <template x-if="displayedLinks.length === 0 && allLinks.length > 0">
-        <div class="text-center py-16">
-          <p class="text-gray-400 text-lg mb-4">No links match your filters</p>
-          <button @click="resetFilters()" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200">
-            Reset filters
-          </button>
-        </div>
-      </template>
+          <!-- Empty state -->
+          <template x-if="displayedLinks.length === 0 && allLinks.length > 0">
+            <div class="text-center py-16">
+              <p class="text-gray-400 text-lg mb-4">No links match your filters</p>
+              <button @click="resetFilters()" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200">
+                Reset filters
+              </button>
+            </div>
+          </template>
 
-      <!-- Initial empty state -->
-      <template x-if="allLinks.length === 0">
-        <div class="text-center py-16">
-          <p class="text-gray-400 text-lg mb-4">No links found. Add some JSON files to the data folder!</p>
-          <p class="text-gray-500 text-sm">Check the README for instructions.</p>
-        </div>
-      </template>
+          <!-- Initial empty state -->
+          <template x-if="allLinks.length === 0">
+            <div class="text-center py-16">
+              <p class="text-gray-400 text-lg mb-4">No links found. Add some JSON files to the data folder!</p>
+              <p class="text-gray-500 text-sm">Check the README for instructions.</p>
+            </div>
+          </template>
+        </section>
+      </div>
     </div>
   </div>
 

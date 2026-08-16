@@ -54,23 +54,24 @@ def main():
             if tag.startswith('"') and tag.endswith('"'):
                 tag = tag[1:-1]
             
-            # Determine source from URL
+            # Determine source from URL; it becomes a tag rather than its own field
             source = extract_source_from_url(url)
-            
+
+            tags = [tag]
+            if source != 'Unknown' and source not in tags:
+                tags.append(source)
+
             # Generate new ID
             max_id_num += 1
             new_id = f'link-{max_id_num}'
-            
+
             # Create new link object
             new_link = {
                 "id": new_id,
                 "title": f"{source} Post",  # Generic title based on source
                 "url": url,
-                "category": tag,  # Use tag as category
-                "source": source,
-                "author": "unknown",
                 "description": description,
-                "tags": [tag],  # Tag as array
+                "tags": tags,
                 "dateAdded": datetime.now().strftime('%Y-%m-%d')
             }
             

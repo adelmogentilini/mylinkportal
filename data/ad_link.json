@@ -4,12 +4,11 @@
       "id": "link-1",
       "title": "TikTok Video",
       "url": "https://vm.tiktok.com/ZNRqBQxhd/",
-      "category": "Entertainment",
-      "source": "TikTok",
-      "author": "unknown",
       "description": "Brown Noise",
       "tags": [
-        "Psyco"
+        "Psyco",
+        "Entertainment",
+        "TikTok"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -17,25 +16,23 @@
       "id": "link-2",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXjuRWqAoSc/?img_index=3&igsh=MWx0N3pyZGVod3ZxbQ==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "trucco per trovare tracce di profilo online",
       "tags": [
-        "Internet"
+        "Internet",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
     {
       "id": "link-3",
-      "title": "Facebook Share",
+      "title": "Ricetta: coni di salsiccia",
       "url": "https://www.facebook.com/share/r/18MqJTKofR/",
-      "category": "Social Media",
-      "source": "Facebook",
-      "author": "unknown",
-      "description": "Ricetta",
+      "description": "Facebook Share",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Social Media",
+        "Facebook"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -43,12 +40,11 @@
       "id": "link-4",
       "title": "Facebook Share",
       "url": "https://www.facebook.com/share/r/18J82LPH1j/",
-      "category": "Social Media",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Ricetta",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Social Media",
+        "Facebook"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -56,12 +52,11 @@
       "id": "link-5",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXO-o9NEs00/?img_index=4&igsh=MTRvOWw2eTkxeHNtMA==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Link online resources",
       "tags": [
-        "Internet"
+        "Internet",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -69,12 +64,11 @@
       "id": "link-6",
       "title": "Instagram Reel",
       "url": "https://www.instagram.com/reel/DWjxklRjR2W/?igsh=dzRic3R6M3VxZW85",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Creazione QRCODE",
       "tags": [
-        "Tecno"
+        "Tecno",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -82,12 +76,11 @@
       "id": "link-7",
       "title": "Instagram Reel",
       "url": "https://www.instagram.com/reel/DXgwMDAiHta/?igsh=ZjVpZHc5MXdid2Nz",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Phone trick",
       "tags": [
-        "Tecno"
+        "Tecno",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -95,12 +88,11 @@
       "id": "link-8",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXobw_ZDUzf/?img_index=1&igsh=MXdoZmszdHFoYWJxNw==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Netflix - social - documentary",
       "tags": [
-        "Video"
+        "Video",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -108,12 +100,11 @@
       "id": "link-9",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DW1pXdgE6SC/?igsh=YnFxdXpjYzF3aXIx",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Youtube",
       "tags": [
-        "Video"
+        "Video",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -121,12 +112,11 @@
       "id": "link-10",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXCiz71CDkQ/?igsh=MTQxb2VpZ3E3MmFvMA==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Humor",
       "tags": [
-        "AUTO"
+        "AUTO",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -134,12 +124,11 @@
       "id": "link-11",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DX64P0lESTH/?img_index=8&igsh=MW10YnYwNDU5dzl2dA==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Link from Instagram",
       "tags": [
-        "AUTO"
+        "AUTO",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -147,12 +136,11 @@
       "id": "link-12",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXyDnzeDJhN/?img_index=3&igsh=Zm00ZG1jcDF5ejJ2",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "AI Site",
       "tags": [
-        "AI"
+        "AI",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -160,12 +148,11 @@
       "id": "link-13",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXU2_ThE4az/?img_index=8&igsh=MTJoZWpkZHNwMHkxMA==",
-      "category": "Social Media",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Internet Tools",
       "tags": [
-        "Internet"
+        "Internet",
+        "Social Media",
+        "Instagram"
       ],
       "dateAdded": "2026-05-06"
     },
@@ -173,12 +160,10 @@
       "id": "link-14",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DX7NxhmDPyN/?img_index=5&igsh=MTQwYnVjbDhlNWcxdg==",
-      "category": "Psyco",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "tecniche gestione mentale",
       "tags": [
-        "Psyco"
+        "Psyco",
+        "Instagram"
       ],
       "dateAdded": "2026-05-13"
     },
@@ -186,12 +171,10 @@
       "id": "link-15",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DX_7e15Esg4/?img_index=4&igsh=MWh4Z2Z2eDQ2amhsdQ==",
-      "category": "Psyco",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "salute mentale",
       "tags": [
-        "Psyco"
+        "Psyco",
+        "Instagram"
       ],
       "dateAdded": "2026-05-13"
     },
@@ -199,12 +182,10 @@
       "id": "link-16",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DXtmHfNDEEN/?img_index=8&igsh=MW1zazNtNXk5cGtiYQ==",
-      "category": "Storia",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "7 tecnologie romane",
       "tags": [
-        "Storia"
+        "Storia",
+        "Instagram"
       ],
       "dateAdded": "2026-05-13"
     },
@@ -212,12 +193,10 @@
       "id": "link-17",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DX9mOzMMyGO/?igsh=b2tpNWE3aDkzZjN1",
-      "category": "Internet",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "site per content creator",
       "tags": [
-        "Internet"
+        "Internet",
+        "Instagram"
       ],
       "dateAdded": "2026-05-13"
     },
@@ -225,12 +204,10 @@
       "id": "link-18",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1SDNhLp2cm/",
-      "category": "Tecno",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "codice word",
       "tags": [
-        "Tecno"
+        "Tecno",
+        "Facebook"
       ],
       "dateAdded": "2026-05-13"
     },
@@ -238,12 +215,10 @@
       "id": "link-19",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DYSoHiJDBvz/?img_index=6&igsh=MWQ1c3MxN2thbnZjNw==",
-      "category": "Internet",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Siti vari con tante risorse di tutti i tipi",
       "tags": [
-        "Internet"
+        "Internet",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -251,12 +226,10 @@
       "id": "link-20",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DYehdtht4BZ/?igsh=MTB2MnQ2MzB0c2dobg==",
-      "category": "Cucina",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Merenda",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -264,12 +237,10 @@
       "id": "link-21",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DYMg7rOtDFJ/?igsh=dDBvcG9tNms0YmNk",
-      "category": "Cucina",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Gelato",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -277,13 +248,11 @@
       "id": "link-22",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DYhJgfHgA1R/?igsh=MXVpMWFlcGozdjJ1Yg==",
-      "category": "Internet",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "AI Free siti",
       "tags": [
         "Internet",
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -291,12 +260,10 @@
       "id": "link-23",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DXiRLwClfHl/?igsh=MXVnOHJydXFhc25oeg==",
-      "category": "Cucina",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Combinazioni di cibi",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -304,12 +271,10 @@
       "id": "link-24",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DYpAkhktFMC/?igsh=YXF4MW4yY3NldXZ3",
-      "category": "Risorse",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Palantir open-source",
       "tags": [
-        "Risorse"
+        "Risorse",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -317,12 +282,10 @@
       "id": "link-25",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DWNr2tdDUOP/?igsh=MW1yaG4yNGptaGs1Zw==",
-      "category": "Internet",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Risorse",
       "tags": [
-        "Internet"
+        "Internet",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -330,12 +293,10 @@
       "id": "link-26",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DXG7uZ2j_kc/?igsh=OTIzZGRiaDVwOTZ0",
-      "category": "Cucina",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Tonno e uova ... proteine",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Instagram"
       ],
       "dateAdded": "2026-05-25"
     },
@@ -343,12 +304,10 @@
       "id": "link-27",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DZUlvX8sDwf/?igsh=MTB6ZW9kcDZqcTZ4Zg==",
-      "category": "Internet",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Sicurewzza password",
       "tags": [
-        "Internet"
+        "Internet",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -356,12 +315,10 @@
       "id": "link-28",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DY9a4CKgqEp/?igsh=MW9wOXIxbTl0M2pxag==",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Claude command",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -369,12 +326,10 @@
       "id": "link-29",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DW63JwPjFE2/?igsh=ZzZpam5qOHZsb25u",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Tecnici e marketng",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -382,12 +337,10 @@
       "id": "link-30",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/18oYczBMPi/",
-      "category": "Internet",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "In  incognito",
       "tags": [
-        "Internet"
+        "Internet",
+        "Facebook"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -395,12 +348,10 @@
       "id": "link-31",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DY-MNONlduw/?igsh=bTVmMGxmangxb2J4",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Aggirare protezioni modelli",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -408,12 +359,10 @@
       "id": "link-32",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reel/DYzv8Uqtwww/?igsh=MTB2N2I1d2VrM3Y0MQ==",
-      "category": "Cucina",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Patate",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
@@ -421,25 +370,21 @@
       "id": "link-33",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/reels/DVuDCZYD_Pk/",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "PAID vs FREE",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-06-21"
     },
     {
       "id": "link-34",
-      "title": "Unknown Post",
+      "title": "Combinazione di cibi: rimedi naturali",
       "url": "https://vm.tiktok.com/ZNRwJxVXo/",
-      "category": "Cucina",
-      "source": "Unknown",
-      "author": "unknown",
-      "description": "Combinazione di cibi 2",
+      "description": "Unknown Post",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Tiktok"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -447,12 +392,10 @@
       "id": "link-35",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DZ94H0bDP4w/?img_index=5&igsh=ZzBwbzYzYTZiZzI4",
-      "category": "Tecno",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Sparire da internet",
       "tags": [
-        "Tecno"
+        "Tecno",
+        "Instagram"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -460,12 +403,10 @@
       "id": "link-36",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DZ_6fOMjd-s/?img_index=2&igsh=MWdnM3UyZW05NjR1eQ==",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Prompt",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -473,9 +414,6 @@
       "id": "link-37",
       "title": "Unknown Post",
       "url": "https://vm.tiktok.com/ZNRKca8ka/",
-      "category": "Tecno",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Ebook auto prodotti",
       "tags": [
         "Tecno"
@@ -484,14 +422,12 @@
     },
     {
       "id": "link-38",
-      "title": "Unknown Post",
+      "title": "pizza di patate",
       "url": "https://vm.tiktok.com/ZNRKwwTQq/",
-      "category": "Cucina",
-      "source": "Unknown",
-      "author": "unknown",
-      "description": "pizza di patate",
+      "description": "Unknown Post",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Tiktok"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -499,12 +435,10 @@
       "id": "link-39",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1BUyVwodFr/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizza veloce",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -512,12 +446,10 @@
       "id": "link-40",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1DE8oq2nrF/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piada pizza",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -525,12 +457,10 @@
       "id": "link-41",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1QUgPFuNMU/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piada pizza 2",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -538,12 +468,10 @@
       "id": "link-42",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1EHKJDTFtu/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Rotolini di piada pizza",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -551,12 +479,10 @@
       "id": "link-43",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/18YheCh5xT/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piada pizza ripiena",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -564,9 +490,6 @@
       "id": "link-44",
       "title": "Unknown Post",
       "url": "https://www.threads.com/@guglielmo.builds/post/DakkNKvD78u?xmt=AQG0zdqniHApxjVpUJ_fWk6aivITVX6I9OyL4pRwMUKHknI-xyyNlidKjljvkeGf0TwOWKK8&source_surface=35&slof=1",
-      "category": "AI",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Assistente AI open source",
       "tags": [
         "AI"
@@ -577,12 +500,10 @@
       "id": "link-45",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1Cv3Nw5gsW/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizza con yogurt",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -590,12 +511,10 @@
       "id": "link-46",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1Gt1HU9d9H/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizzette",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -603,9 +522,6 @@
       "id": "link-47",
       "title": "Unknown Post",
       "url": "https://vm.tiktok.com/ZNRwJxVXo/",
-      "category": "Cucina",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Cibi",
       "tags": [
         "Cucina"
@@ -616,12 +532,10 @@
       "id": "link-48",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DZ94H0bDP4w/?img_index=5&igsh=ZzBwbzYzYTZiZzI4",
-      "category": "Tecno",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Sparire da internet",
       "tags": [
-        "Tecno"
+        "Tecno",
+        "Instagram"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -629,12 +543,10 @@
       "id": "link-49",
       "title": "Instagram Post",
       "url": "https://www.instagram.com/p/DZ_6fOMjd-s/?img_index=2&igsh=MWdnM3UyZW05NjR1eQ==",
-      "category": "AI",
-      "source": "Instagram",
-      "author": "unknown",
       "description": "Prompt",
       "tags": [
-        "AI"
+        "AI",
+        "Instagram"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -642,9 +554,6 @@
       "id": "link-50",
       "title": "Unknown Post",
       "url": "https://vm.tiktok.com/ZNRKca8ka/",
-      "category": "Tecno",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Ebook auto prodotti",
       "tags": [
         "Tecno"
@@ -655,9 +564,6 @@
       "id": "link-51",
       "title": "Unknown Post",
       "url": "https://vm.tiktok.com/ZNRKwwTQq/",
-      "category": "Cucina",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "pizza di patate",
       "tags": [
         "Cucina"
@@ -668,12 +574,10 @@
       "id": "link-52",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1BUyVwodFr/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizza veloce",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -681,12 +585,10 @@
       "id": "link-53",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1DE8oq2nrF/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piada pizza",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -694,12 +596,10 @@
       "id": "link-54",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1QUgPFuNMU/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piada pizza 2",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -707,12 +607,10 @@
       "id": "link-55",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1EHKJDTFtu/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Rotolini di piada pizza",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -720,12 +618,10 @@
       "id": "link-56",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/18YheCh5xT/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Piadi pizza ripiena",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -733,9 +629,6 @@
       "id": "link-57",
       "title": "Unknown Post",
       "url": "https://www.threads.com/@guglielmo.builds/post/DakkNKvD78u?xmt=AQG0zdqniHApxjVpUJ_fWk6aivITVX6I9OyL4pRwMUKHknI-xyyNlidKjljvkeGf0TwOWKK8&source_surface=35&slof=1",
-      "category": "AI",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Assistente AI open source",
       "tags": [
         "AI"
@@ -746,12 +639,10 @@
       "id": "link-58",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1Cv3Nw5gsW/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizza con yogurt",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -759,12 +650,10 @@
       "id": "link-59",
       "title": "Facebook Post",
       "url": "https://www.facebook.com/share/r/1Gt1HU9d9H/",
-      "category": "Cucina",
-      "source": "Facebook",
-      "author": "unknown",
       "description": "Pizzette",
       "tags": [
-        "Cucina"
+        "Cucina",
+        "Facebook"
       ],
       "dateAdded": "2026-07-14"
     },
@@ -772,14 +661,89 @@
       "id": "link-60",
       "title": "Unknown Post",
       "url": "https://revealer.us/dashboard",
-      "category": "Internet ricerche",
-      "source": "Unknown",
-      "author": "unknown",
       "description": "Ricerca persone",
       "tags": [
         "Internet ricerche"
       ],
       "dateAdded": "2026-07-14"
+    },
+    {
+      "id": "link-61",
+      "title": "Damiano | Intelligenza Artificiale | Tecnologia | Tips on Instagram: &quot;Siti potenti che devi conoscere (parte 1)&#x1f37d;&#xfe0f;&#x1f92f;\r\n\r\nCon MyFridgeFood scegli gli ingredienti che hai gi&#xe0; in casa e il sito ti trova ricette da preparare al volo, anche col frigo mezzo vuoto.\r\n\r\n&#x1f465; Condividilo con chi non sa mai che cucinare\r\n&#x1f680; Seguimi per altre chicche tech\r\n\r\n#sitiutili #ricette #tecnologia #trucchitech #cucina&quot;",
+      "url": "https://www.instagram.com/reels/Da5tTkhiWGw/",
+      "description": "Siti potenti di cucina e non solo",
+      "tags": [
+        "Cucina",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-62",
+      "title": "Maverick Maltin | AI &amp; ChatGPT on Instagram: &quot;Comment &#x201c;Tools&#x201d; and I&#x2019;ll send you my best AI tools &#x1f447;\n\n#ai #chatgpt #claude #gemini #perplexity&quot;",
+      "url": "https://www.instagram.com/reels/DbSUBltKWHr/",
+      "description": "Strumenti di IA",
+      "tags": [
+        "AI",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-63",
+      "title": "Alex Moore on Instagram: &quot;Comment LIST and I&#039;ll send you the full collection. The internet is far bigger and stranger than most people realize, and there are websites out there that feel so unusual or surprisingly useful that they genuinely catch you off guard. This carousel breaks down a collection of websites that actually exist and are worth exploring, each one offering something different from what you&#039;d typically find through a regular search. Some are creative, some are fascinating, and some are just hard to explain until you see them for yourself. The goal is to show you a side of the internet most people never stumble across on their own. &#x1f516; Save this for later &#x27a1;&#xfe0f; Follow &#064;alexmoore.ai for weird websites, hidden gems, and things worth knowing. #WeirdWebsites #InternetFinds #HiddenGems #UsefulWebsites #ExploreTheInternet&quot;",
+      "url": "https://www.instagram.com/p/Da7rmNpk0u3/?img_index=7&igsh=MWMzbjdleGhqaWFrYQ%3D%3D",
+      "description": "Siti utili",
+      "tags": [
+        "Internet",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-64",
+      "title": "Men Savings on Instagram: &quot;Intelligence isn&#039;t measured by how many facts you can memorise. It&#039;s shaped by how willing you are to challenge your own thinking, stay curious, and see problems from new perspectives.\n\nSimple habits can help keep your mind flexible. Read the ending of an article before the beginning, explore a topic you&#039;ve never studied, or try writing with your non-dominant hand for a few minutes. Even small changes to familiar routines can encourage fresh ways of thinking.\n\nAnother useful exercise is defending a viewpoint you don&#039;t personally agree with or spending quiet time reflecting without distractions. These habits won&#039;t instantly increase your IQ, but they can improve critical thinking, expose personal biases, and help you become a more adaptable problem solver.\n\nFollow &#064;mensavings for more practical insights, psychology, and everyday knowledge.&quot;",
+      "url": "https://www.instagram.com/p/DbIg05ngbYh/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ%3D%3D&img_index=1",
+      "description": "Tecniche 'mentali' di miglioramento",
+      "tags": [
+        "AI",
+        "Tecno",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-65",
+      "title": "Finanza | Business | Imprenditoria on Instagram: &quot;L&#x2019;intelligenza artificiale pu&#xf2; sembrare sicura di s&#xe9; anche quando si sbaglia completamente.\n\nEcco perch&#xe9; il modo in cui scrivi il prompt &#xe8; fondamentale.\n\nCon le istruzioni giuste, Claude pu&#xf2; rallentare il ragionamento, distinguere i fatti dalle ipotesi, ammettere l&#x2019;incertezza e smettere di fingere di sapere cose che in realt&#xe0; non sa.\n\nNon si tratta di &#x201c;&#x201d;smascherare&#x201d;&#x201d; l&#x2019;intelligenza artificiale.\n\nSi tratta di rendere le sue risposte pi&#xf9; utili, affidabili e oneste.\n\nIl prompt giusto pu&#xf2; trasformare una risposta formulata con eccessiva sicurezza in una\n\n&#x2022;\n\n&#x1f3e6; Segui &#064;capitalista.it per altri contenuti sulla finanza!\n\n#business #imprenditoria #finanza #economia #denaro&quot;",
+      "url": "https://www.instagram.com/p/Dbf5Zd_jScI/?img_index=2&igsh=MTJ0MGIxazVqZDAzZg%3D%3D",
+      "description": "Prompting per CLAUDE",
+      "tags": [
+        "AI",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-66",
+      "title": "Gabriele Aprile on Instagram: &quot;Commenta SPARISCI e ti mando la guida per cancellarti da internet con Claude (prompt copia-incolla dentro). &#x1f447;\n\nCerca il tuo nome pi&#xf9; la tua citt&#xe0;. Salta fuori il tuo indirizzo, il numero, l&#039;et&#xe0;, a volte con chi vivi. Non l&#039;hai messo tu.\n\nSono i data broker: aziende come Spokeo, Whitepages, BeenVerified e decine d&#039;altre che raccolgono i tuoi dati dai registri pubblici e vendono il tuo profilo a chiunque paghi. Non hai mai acconsentito, e per chi ha una faccia pubblica &#xe8; l&#039;indirizzo di casa accanto al proprio nome.\n\nIl problema &#xe8; sempre stato la fatica: ogni sito ha un opt-out diverso e nascosto, e dopo qualche mese ti ri-aggiungono. Ecco dove entra Claude, in 3 mosse:\n\n1&#xfe0f;&#x20e3; Gli chiedi di trovare ovunque sei esposto &#x2192; ti d&#xe0; la lista coi link di rimozione.\n2&#xfe0f;&#x20e3; Gli fai scrivere le richieste, una per sito, citando il GDPR (in Europa hai il diritto alla cancellazione) o il CCPA.\n3&#xfe0f;&#x20e3; Con la versione che naviga e compila i form da sola, imposti un task che le invia e ricontrolla ogni 6 mesi.\n\nOnest&#xe0;: qualche sito chieder&#xe0; una conferma manuale. Ma trasformi una tortura infinita in una cosa che imposti una volta.\n\nCommenta SPARISCI e ti arriva la guida in DM. &#x270c;&#xfe0f;&quot;",
+      "url": "https://www.instagram.com/reels/Da7rFmPD63k/",
+      "description": "Come sparire da internet",
+      "tags": [
+        "AI",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
+    },
+    {
+      "id": "link-67",
+      "title": "Gabriele Venturini | Marketing &amp; AI on Instagram: &quot;Vendi tutto quello che hai in casa con ChatGPT.\n\nScatta una foto, caricala con ChatGpt Work e scrivi questi prompt:\n\nPrompt 1: &#x201c;Guarda ognuno di questi oggetti. Dimmi esattamente cosa sono, quanto valgono adesso e a quanto potrei realisticamente venderli.&#x201d;&#x2028;&#x2028;Prompt 2: &#x201c;Ora scrivimi l&#x2019;annuncio perfetto per ciascuno, un titolo che vende, una descrizione completa e il prezzo esatto a cui pubblicarlo.&#x201d;&#x2028;&#x2028;Prompt 3: Apri il tuo browser e vai a creare questi annunci su Facebook Marketplace usando le foto e le descrizioni che hai appena scritto.&#x201d;\n\nPrompt 4: &#x201c;Ora programma un&#x2019;attivit&#xe0; che si esegue ogni 24 ore per rispondere agli acquirenti e negoziare il prezzo migliore possibile per me.&#x201d;&quot;",
+      "url": "https://www.instagram.com/reels/DcDu1szMxjb/",
+      "description": "Usare chatgpt come assitente per vendere",
+      "tags": [
+        "AI",
+        "Instagram"
+      ],
+      "dateAdded": "2026-08-16"
     }
   ]
 }

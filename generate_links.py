@@ -7,30 +7,27 @@ def infer_info(url):
     if 'tiktok.com' in url:
         platform = 'TikTok'
         title = 'TikTok Video'
-        category = 'Entertainment'
     elif 'instagram.com' in url:
         platform = 'Instagram'
         if '/reel/' in url:
             title = 'Instagram Reel'
         else:
             title = 'Instagram Post'
-        category = 'Social Media'
     elif 'facebook.com' in url:
         platform = 'Facebook'
         title = 'Facebook Share'
-        category = 'Social Media'
     else:
         platform = 'Unknown'
         title = url
-        category = 'General'
-    
+
+    tags = ['AUTO']
+    if platform != 'Unknown':
+        tags.append(platform)
+
     return {
         'title': title,
-        'category': category,
-        'source': platform,
-        'author': 'unknown',
         'description': f'Link from {platform}',
-        'tags': ['AUTO']
+        'tags': tags
     }
 
 def main():
@@ -46,9 +43,6 @@ def main():
             'id': f'link-{i}',
             'title': info['title'],
             'url': url.strip(),
-            'category': info['category'],
-            'source': info['source'],
-            'author': info['author'],
             'description': info['description'],
             'tags': info['tags'],
             'dateAdded': today

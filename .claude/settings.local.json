@@ -6,7 +6,21 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "WebFetch(domain:vm.tiktok.com)",
-      "WebFetch(domain:www.tiktok.com)"
+      "WebFetch(domain:www.tiktok.com)",
+      "Bash(node -e \"console.log\\(typeof fetch\\)\")",
+      "Bash(node -e \"require\\('./server.js'\\)\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/links -H \"Content-Type: application/json\" -d '{\"url\":\"https://example.com/qualcosa\"}')",
+      "Bash(node -e \"process.stdin.pipe\\(require\\('fs'\\).createWriteStream\\('/dev/stdout'\\)\\)\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/links -H \"Content-Type: application/json\" -d '{\"url\":\"https://vm.tiktok.com/FAKE123/\",\"description\":\"Una bella ricetta di pizza\"}')",
+      "Bash(curl -s -X POST http://localhost:3000/api/links -H \"Content-Type: application/json\" -d '{}')",
+      "Bash(nohup node server.js)",
+      "Bash(curl -s http://localhost:3000/api/links)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\);process.stdin.on\\('end',\\(\\)=>console.log\\(JSON.parse\\(d\\).length + ' links loaded'\\)\\)\")",
+      "Bash(node *)",
+      "Bash(pkill -f \"node server.js\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('generate_links.py'\\).read\\(\\)\\); ast.parse\\(open\\('process_fromwhatsup.py'\\).read\\(\\)\\); print\\('python syntax OK'\\)\")",
+      "Bash(curl -s http://localhost:3000/api/filters)",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('generate_links.py'\\).read\\(\\)\\); ast.parse\\(open\\('process_fromwhatsup.py'\\).read\\(\\)\\); print\\('python OK'\\)\")"
     ]
   }
 }

@@ -6,7 +6,7 @@ A beautiful, self-contained server that creates an engaging navigation portal fr
 
 - 🎨 Modern, responsive UI with dark theme
 - 🔍 Search links by title or description
-- 🏷️ Filter by category, source, author, and tags
+- 🏷️ Filter by tags (platform/source included as just another tag)
 - 📁 Multiple JSON files support (no merge conflicts)
 - 🌐 Self-contained Express server
 - 📱 Mobile-friendly design
@@ -39,9 +39,6 @@ Create JSON files in the `data/` folder. Each file should follow this structure:
       "id": "unique-id",
       "title": "Link Title",
       "url": "https://example.com",
-      "category": "Programming",
-      "source": "TikTok",
-      "author": "creator_name",
       "description": "Brief description of the link",
       "tags": ["tag1", "tag2"],
       "dateAdded": "2026-05-06"
@@ -56,13 +53,11 @@ Create JSON files in the `data/` folder. Each file should follow this structure:
 
 ### Optional Fields
 - `id` - Unique identifier (auto-generated if not provided)
-- `category` - Link category (e.g., "Programming", "Design")
-- `source` - Where you found it (e.g., "TikTok", "Instagram", "Direct URL")
-- `author` - Creator/author name
 - `description` - Short description
-- `tags` - Array of tags for additional filtering
+- `tags` - Array of tags; the first tag doubles as the link's primary topic for grouping in
+  the UI. There's no separate `source`/platform field — if you want it visible, add it as a
+  tag (e.g. `"TikTok"`), same as the `POST /api/links` endpoint does automatically
 - `dateAdded` - When you added the link
-- `rating` - Optional rating (1-5)
 
 ## File Organization
 
@@ -106,16 +101,40 @@ One person can maintain each file independently!
 GET /api/links
 ```
 
+### Add a Link
+```
+POST /api/links
+Content-Type: application/json
+
+{ "url": "https://..." }
+```
+Only `url` is required. The server tries to fill in the rest from the link itself:
+- the platform is inferred from the domain (TikTok, Instagram, Facebook, YouTube, X, ...)
+  and added as a tag (not a separate field)
+- `title`/`description` are read from the page's `og:title`/`og:description` if reachable
+- topic `tags` are guessed from that text via a keyword list; if no topic can be established,
+  `tags` is set to `["DACLASSIFICARE"]` so it can be reviewed and reclassified later
+
+You can override any inferred field by passing `title`, `description` or `tags` (array)
+in the request body. New links are appended to `data/ad_link.json`.
+
+### Update a Link
+```
+PUT /api/links/:id
+Content-Type: application/json
+
+{ "title": "...", "description": "...", "tags": ["..."] }
+```
+Any subset of `title`, `description`, `tags` can be sent. Used by the UI's edit-title,
+edit-description, edit-tags and title/description swap actions.
+
 ### Query Parameters
-- `category=Programming` - Filter by category
-- `source=TikTok` - Filter by source
-- `author=creator_name` - Filter by author
 - `tag=javascript` - Filter by tag
 - `search=query` - Search by title/description
 
 ### Example
 ```
-GET /api/links?category=Programming&search=react
+GET /api/links?tag=AI&search=prompt
 ```
 
 ### Get Available Filters
@@ -126,9 +145,6 @@ GET /api/filters
 Returns:
 ```json
 {
-  "categories": ["Design", "Programming"],
-  "sources": ["Instagram", "TikTok", "YouTube"],
-  "authors": ["creator1", "creator2"],
   "tags": ["javascript", "design", "tutorial"]
 }
 ```
